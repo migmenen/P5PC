@@ -1,10 +1,15 @@
-package main;
+package util;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Usuario 
+public class Usuario implements Serializable
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 	private String _user;
 	private String _ip;
 	private List<String> _files;
@@ -26,5 +31,18 @@ public class Usuario
 	public void add_file(String filename) { _files.add(filename); }
 	public boolean is_isOnline() { return _isOnline; }
 	public void set_isOnline(boolean _isOnline) { this._isOnline = _isOnline; }
+	
+	public String toString()
+	{
+		StringBuilder s = new StringBuilder();
+		
+		s.append(_user + " " + _ip + " " + _isOnline + "\n");
+		
+		for(int i = 0; i < _files.size(); i++)
+		{
+			s.append(_files.get(i) + " ");
+		}
+		return s.toString();
+	}
 }
 
